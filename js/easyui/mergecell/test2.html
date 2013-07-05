@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>jQuery EasyUI</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <script type="text/javascript" src="../jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+    <script>
+        /*
+            mergeCellsByField        ：根据字段列表合并jquery--easyui--datagrid中的相应列
+            参数1 tableID    ：要操作的table的id;
+            参数2 colList    ：要合并的列的列表,用逗号分隔（例如："name,addr,code"）;
+            注意事项：
+.用来合并只用于数据呈现的datagrid；
+.该函数在onLoadSuccess中调用，在调用前判断rows的length大于0，可根据实际情况选择是否延时调用。
+                        onLoadSuccess:function(data){
+                            if (data.rows.length>0)
+                            {
+                                //mergeCellsByField("test","name,addr,code",data);
+                                setTimeout("mergeCellsByField(\"test\",\"name,code,addr\")",2000); 
+                            }
+                        }
+                  Yuanzy  @2010/12/15 16:31:34
+        */
+        function mergeCellsByField(tableID,colList){
+            var ColArray = colList.split(",");
+            var tTable = $('#'+tableID);
+            var TableRowCnts=tTable.datagrid("getRows").length;
+            var tmpA;
+            var tmpB;
+            var PerTxt = "";
+            var CurTxt = "";
+            var alertStr = "";
+            //for (j=0;j<=ColArray.length-1 ;j++ )
+            for (j=ColArray.length-1;j>=0 ;j-- )
+            {
+                //当循环至某新的列时，变量复位。
+                PerTxt="";
+                tmpA=1;
+                tmpB=0;
+                
+                //从第一行（表头为第0行）开始循环，循环至行尾(溢出一位)
+                for (i=0;i<=TableRowCnts ;i++ )
+                {
+                    if (i==TableRowCnts)
+                    {
+                        CurTxt="";
+                    }
+                    else
+                    {
+                        CurTxt=tTable.datagrid("getRows")[i][ColArray[j]];
+                    }
+                    if (PerTxt==CurTxt)
+                    {
+                        tmpA+=1;
+                    }
+                    else
+                    {
+                        tmpB+=tmpA;
+                        tTable.datagrid('mergeCells',{
+                            index:i-tmpA,
+                            field:ColArray[j],
+                            rowspan:tmpA,
+                            colspan:null
+                        });
+                        tmpA=1;
+                    }
+                    PerTxt=CurTxt;
+                }
+            }
+        }
+
+        $(function(){
+            $('#test').datagrid({
+                title:'My Title',
+                iconCls:'icon-save',
+                width:600,
+                height:420,
+                nowrap: false,
+                striped: true,
+                collapsible:true,
+                url:'datagrid_data.json',
+                sortName: 'code',
+                //sortOrder: 'desc',
+                remoteSort: false,
+                idField:'code',
+                onLoadSuccess:function(data){
+                    if (data.rows.length>0)
+                    {
+                        setTimeout("mergeCellsByField(\"test\",\"name,code,addr\")",2000); 
+                        //mergeCellsByField("test","name,code,addr");
+                    }
+                },
+                frozenColumns:[[
+                    {field:'ck',checkbox:true},
+                    {title:'code',field:'code',width:80,sortable:true}
+                ]],
+                columns:[[
+                    {title:'Base Information',colspan:3},
+                    {field:'opt',title:'Operation',width:100,align:'center', rowspan:2,
+                        formatter:function(value,rec){
+                            return '<span style="color:red">Edit Delete</span>';
+                        }
+                    }
+                ],[
+                    {field:'name',title:'Name',width:120},
+                    {field:'addr',title:'Address',width:120,rowspan:2,sortable:true,
+                        sorter:function(a,b){
+                            return (a>b?1:-1);
+                        }
+                    },
+                    {field:'col4',title:'Col41',width:150,rowspan:2}
+                ]],
+                pagination:true,
+                rownumbers:true,
+                toolbar:[{
+                    id:'btnadd',
+                    text:'Add',
+                    iconCls:'icon-add',
+                    handler:function(){
+                        $('#btnsave').linkbutton('enable');
+                        alert('add')
+                    }
+                },{
+                    id:'btncut',
+                    text:'Cut',
+                    iconCls:'icon-cut',
+                    handler:function(){
+                        $('#btnsave').linkbutton('enable');
+                        alert('cut')
+                    }
+                },'-',{
+                    id:'btnsave',
+                    text:'Save',
+                    disabled:true,
+                    iconCls:'icon-save',
+                    handler:function(){
+                        $('#btnsave').linkbutton('disable');
+                        alert('save')
+                    }
+                }]
+            });
+            var p = $('#test').datagrid('getPager');
+            if (p){
+                $(p).pagination({
+                    onBeforeRefresh:function(){
+                        alert('before refresh');
+                    }
+                });
+            }
+        });
+
+    </script>
+</head>
+<body>
+    <h1>DataGrid</h1>
+
+    
+    <table id="test"></table>
+    
+</body>
+</html>

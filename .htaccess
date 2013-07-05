@@ -1,0 +1,16 @@
+RewriteEngine on
+RewriteBase /
+
+ErrorDocument 404 /not_found.html
+
+RewriteRule ^$ 目录/	[R,L]
+
+RewriteRule ^目录$ 目录/	[R,L]
+RewriteRule ^目录/$ content/%{HTTP_HOST}/目录.html	[L]
+
+RewriteRule ^目录/(.+[^/])$ 目录/$1/	[R,L]
+RewriteRule ^目录/(.+)/$ content/%{HTTP_HOST}/$1\.html	[L]
+
+
+RewriteCond $1 !^(content|目录|index\.php|image|js|css|robots\.txt|favicon.ico|404)
+RewriteRule ^(.*)$ index.php/$1 [L]

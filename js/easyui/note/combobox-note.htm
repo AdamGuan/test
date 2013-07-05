@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>jQuery.beautyOfCode 0.2 Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<script type="text/javascript" src="../jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../jquery.beautyOfCode-min.js"></script>
+<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript">
+		$.beautyOfCode.init({
+			brushes: ['Xml', 'JScript', 'CSharp', 'Plain', 'Php'],
+			ready: function() {
+				$.beautyOfCode.beautifyAll();
+				
+			}
+		});
+	</script>
+
+<script>
+		function loadData(){
+			$('#cc').combobox({
+				url:'combobox_data.php',//该文件内容在下面
+				valueField:'id',
+				textField:'text',
+			});
+		}
+		function setValue(){
+			$('#cc').combobox('setValue','2');
+		}
+		function getValue(){
+			var val = $('#cc').combobox('getValue');
+			alert(val);
+		}
+		function disable(){
+			$('#cc').combobox('disable');
+		}
+		function enable(){
+			$('#cc').combobox('enable');
+		}
+$( function() {
+		$('#cc').combobox( {
+			width:150,
+			listWidth:150,
+			listHeight:100,
+			//valuefield:'value',
+			//textField:'text',
+			//url:'combobox_data.json',
+			editable:true
+		});
+	});
+	</script>
+
+
+
+
+</head>
+<body >
+	<h2>实例</h2>
+
+	<pre class="code">
+	  <code class="html">
+&lt;script>
+		function loadData(){
+			$('#cc').combobox({
+				url:'combobox_data.json',//该文件内容在下面
+				valueField:'id',
+				textField:'text'
+			});
+		}
+		function setValue(){
+			$('#cc').combobox('setValue','2');
+		}
+		function getValue(){
+			var val = $('#cc').combobox('getValue');
+			alert(val);
+		}
+		function disable(){
+			$('#cc').combobox('disable');
+		}
+		function enable(){
+			$('#cc').combobox('enable');
+		}
+	$( function() {
+		$('#cc').combobox( {
+			width:150,
+			listWidth:150,
+			listHeight:100,
+			//valuefield:'value',
+			//textField:'text',
+			//url:'combobox_data.json',
+			editable:false
+		});
+	});
+&lt;/script>
+
+
+&lt;h1>ComboBox&lt;/h1>
+&lt;div style="margin-bottom: 10px;">&lt;a href="#" onclick="loadData()">loadData&lt;/a>
+&lt;a href="#" onclick="setValue()">setValue&lt;/a> &lt;a href="#"
+	onclick="getValue()">getValue&lt;/a> &lt;a href="#" onclick="disable()">disable&lt;/a>
+&lt;a href="#" onclick="enable()">enable&lt;/a>&lt;/div>
+
+&lt;span>Options: &lt;/span>
+&lt;select id="cc" name="dept" required="true">
+	&lt;option value="">==请选择==&lt;/option>
+	&lt;option value="0">苹果&lt;/option>
+	&lt;option value="1">香蕉&lt;/option>
+	&lt;option value="2">鸭梨&lt;/option>
+	&lt;option value="3">西瓜&lt;/option>
+	&lt;option value="4">芒果&lt;/option>
+&lt;/select>
+      </code>
+	</pre>
+  <h4>演示</h4>
+
+<h1>ComboBox</h1>
+<div style="margin-bottom: 10px;"><a href="javascript:void(0)" onclick="loadData()">loadData</a>
+<a href="javascript:void(0)" onclick="setValue()">setValue</a> <a href="javascript:void(0)"
+	onclick="getValue()">getValue</a> <a href="javascript:void(0)" onclick="disable()">disable</a>
+<a href="javascript:void(0)" onclick="enable()">enable</a></div>
+
+<span>Options: </span>
+<select id="cc" name="dept" required="true">
+	<option value="">==请选择==</option>
+	<option value="0">苹果</option>
+	<option value="1">香蕉</option>
+	<option value="2">鸭梨</option>
+	<option value="3">西瓜</option>
+	<option value="4">芒果</option>
+</select>
+
+
+<h4>扩展</h4>
+<h5>中文化,星期,月份的地方显示中文</h5>
+	<pre class="code">
+	  <code class="html">
+		&lt;script type="text/javascript" src="../locale/easyui-lang-zh_CN.js">&lt;/script>
+      </code>
+	</pre>
+
+
+<h5>上面的javascript中的函数function formatDate是接收返回的日期并将其格式化</h5>
+	<pre class="code">
+	  <code class="html">
+	/*  
+	 将Date/String类型,解析为String类型.  
+	 传入String类型,则先解析为Date类型  
+	 不正确的Date,返回 ''  
+	 如果时间部分为0,则忽略,只返回日期部分.  
+	 */
+	function formatDate(v) {
+		if (v instanceof Date) {
+			var y = v.getFullYear();
+			var m = v.getMonth() + 1;
+			var d = v.getDate();
+			var h = v.getHours();
+			var i = v.getMinutes();
+			var s = v.getSeconds();
+			var ms = v.getMilliseconds();
+			if (ms > 0)
+				return y + '-' + m + '-' + d + ' ' + h + ':' + i + ':' + s
+						+ '.' + ms;
+			if (h > 0 || i > 0 || s > 0)
+				return y + '-' + m + '-' + d + ' ' + h + ':' + i + ':' + s;
+			return y + '-' + m + '-' + d;
+		}
+		return '';
+	}
+      </code>
+	</pre>
+
+<h5>$('#dd').datebox中的参数formatter : formatDate,就是指定接收返回日期并将其处理的函数</h5>
+
+<h4>参数</h4>
+	<pre class="code">
+	  <code class="html">
+属性名			类型			描述										默认值
+currentText		字符串		为当前日期按钮显示的文本					    Today
+closeText		字符串		关闭按钮显示的文本							 Close
+disabled		布尔		如果为true则禁用输入框						  FALSE
+required		布尔		定义输入框是否为必添						     FALSE
+missingMessage	字符串		当输入框为空时提示的文本					   必填
+formatter		function	格式化日期的函数，这个函数以’date’为参数，
+						    并且返回一个字符串							  ——
+parser			function	分析字符串的函数，这个函数以’date’为参数并
+						    返回一个日期								  ——
+
+
+      </code>
+	</pre>
+
+<h5>事件</h5>
+	<pre class="code">
+	  <code class="html">
+事件名		参数		描述	
+onSelect	date	当选择一个日期时触发	
+
+
+      </code>
+	</pre>
+
+<h5>方法</h5>
+	<pre class="code">
+	  <code class="html">
+方法名		参数		描述
+destroy		none		销毁组件
+disable		none		禁用输入框.
+enable		none		启用输入框
+
+
+
+      </code>
+	</pre>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>jQuery EasyUI</title>
+	<link rel="stylesheet" type="text/css" href="themes/gray/easyui.css">
+	
+	<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="jquery.easyui.min.js"></script>
+
+	<script>
+
+	
+function addTab(title, url){
+    if ($('#tt').tabs('exists', title)){
+        $('#tt').tabs('select', title);
+    } else {
+        var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
+        $('#tt').tabs('add',{
+            title:title,
+            content:content,
+            closable:true
+        });
+    }
+}
+
+$(function(){
+	$(".menu_left>li").mouseover(function(){
+		$(this).css({"background-color":"#C0D7EE"});
+	});
+	$(".menu_left>li").mouseout(function(){
+		$(this).css({"background-color":"transparent"});
+	});
+	
+})
+
+	</script>
+
+<style>
+.menu_left a,.menu_left a:hover,.menu_left a:visited{text-decoration : none;color:#3C67A5}
+.menu_left a:hover{text-decoration : underline;}
+.menu_left {margin-left:0;padding-left:10px;list-style:none}
+.menu_left li{padding:3px;height:15px}
+.menu_left li a{float:right;margin-left:10px} 
+.menu_left a.left {float:left;margin-left:0;}
+
+</style>
+</head>
+<body class="easyui-layout">
+
+	<div  region="west" split="true" title="West" style="width:300px;padding:10px;">
+<ul class="menu_left">
+
+<li><a href="#" onclick="addTab('手风琴源码','txt/accordion.txt')">源码</a><a href="#" onclick="addTab('手风琴说明','note/accordion-note.htm')">说明</a><a class="left" href="#" onclick="addTab('手风琴','demo/accordion.html')">手风琴 accordion</a></li>
+
+<li><a href="#" onclick="addTab('日历源码','txt/calendar.txt')">源码</a><a href="#" onclick="addTab('日历说明','note/DateBox-note.htm')">说明</a><a class="left" href="#" onclick="addTab('日历','demo/calendar.html')">日历 calendar</a></li>
+<li><a href="#" onclick="addTab('下拉列表源码','txt/combo.txt')">源码</a><a class="left" href="#" onclick="addTab('下拉列表','demo/combo.html')">下拉列表 combo</a></li>
+<li><a href="#" onclick="addTab('下拉框源码','txt/combobox.txt')">源码</a><a href="#" onclick="addTab('下拉框说明','note/combobox-note.htm')">说明</a><a class="left" href="#" onclick="addTab('下拉框','demo/combobox.html')">下拉框 combobox</a></li>
+<li><a href="#" onclick="addTab('下拉栅格源码','txt/combogrid.txt')">源码</a><a class="left" href="#" onclick="addTab('下拉栅格','demo/combogrid.html')">下拉栅格 combogrid</a></li>
+<li><a href="#" onclick="addTab('下拉树源码','txt/combotree.txt')">源码</a><a class="left" href="#" onclick="addTab('下拉树','demo/combotree.html')">下拉树 combotree</a></li>
+
+<li><a href="#" onclick="addTab('数据栅格源码','txt/datagrid.txt')">源码</a><a class="left" href="#" onclick="addTab('数据栅格','demo/datagrid.html')">数据栅格 datagrid</a></li>
+<li><a href="#" onclick="addTab('数据栅格2源码','txt/datagrid2.txt')">源码</a><a class="left" href="#" onclick="addTab('数据栅格2','demo/datagrid2.html')">数据栅格2 datagrid2</a></li>
+<li><a href="#" onclick="addTab('数据栅格3源码','txt/datagrid3.txt')">源码</a><a class="left" href="#" onclick="addTab('数据栅格3','demo/datagrid3.html')">数据栅格3 datagrid3</a></li>
+<li><a href="#" onclick="addTab('数据框源码','txt/datebox.txt')">源码</a><a class="left" href="#" onclick="addTab('数据框','demo/datebox.html')">数据框 datebox</a></li>
+
+<li><a href="#" onclick="addTab('对话框源码','txt/dialog.txt')">源码</a><a class="left" href="#" onclick="addTab('对话框','demo/dialog.html')">对话框 dialog</a></li>
+<li><a href="#" onclick="addTab('拖动源码','txt/draggable.txt')">源码</a><a class="left" href="#" onclick="addTab('拖动','demo/draggable.html')">拖动 draggable</a></li>
+<li><a href="#" onclick="addTab('放置源码','txt/droppable.txt')">源码</a><a class="left" href="#" onclick="addTab('放置','demo/droppable.html')">放置 droppable</a></li>
+<li><a href="#" onclick="addTab('放置1源码','txt/droppable1.txt')">源码</a><a class="left" href="#" onclick="addTab('放置1','demo/droppable1.html')">放置1 droppable1</a></li>
+<li><a href="#" onclick="addTab('放置2源码','txt/droppable2.txt')">源码</a><a class="left" href="#" onclick="addTab('放置2','demo/droppable2.html')">放置2 droppable2</a></li>
+<li><a href="#" onclick="addTab('加载源码','txt/easyloader.txt')">源码</a><a class="left" href="#" onclick="addTab('加载','demo/easyloader.html')">加载 easyloader</a></li>
+
+<li><a href="#" onclick="addTab('表单源码','txt/form.txt')">源码</a><a class="left" href="#" onclick="addTab('表单','demo/form.html')">表单 form</a></li>
+<li><a href="#" onclick="addTab('布局源码','txt/layout.txt')">源码</a><a class="left" href="#" onclick="addTab('布局','demo/layout.html')">布局 layout</a></li>
+<li><a href="#" onclick="addTab('布局1源码','txt/layout1.txt')">源码</a><a class="left" href="#" onclick="addTab('布局1','demo/layout1.html')">布局1 layout1</a></li>
+<li><a href="#" onclick="addTab('布局2源码','txt/layout2.txt')">源码</a><a class="left" href="#" onclick="addTab('布局2','demo/layout2.html')">布局2 layout2</a></li>
+<li><a href="#" onclick="addTab('链接按钮源码','txt/linkbutton.txt')">源码</a><a class="left" href="#" onclick="addTab('链接按钮','demo/linkbutton.html')">链接按钮 linkbutton</a></li>
+
+<li><a href="#" onclick="addTab('菜单源码','txt/menu.txt')">源码</a><a class="left" href="#" onclick="addTab('菜单','demo/menu.html')">菜单 menu</a></li>
+<li><a href="#" onclick="addTab('按钮菜单源码','txt/menubutton.txt')">源码</a><a class="left" href="#" onclick="addTab('按钮菜单','demo/menubutton.html')">按钮菜单 menubutton</a></li>
+<li><a href="#" onclick="addTab('提示框源码','txt/messager.txt')">源码</a><a class="left" href="#" onclick="addTab('提示框','demo/messager.html')">提示框 messager</a></li>
+<li><a href="#" onclick="addTab('只输入数字源码','txt/numberbox.txt')">源码</a><a class="left" href="#" onclick="addTab('只输入数字','demo/numberbox.html')">只输入数字 numberbox</a></li>
+<li><a href="#" onclick="addTab('数字微调源码','txt/numberspinner.txt')">源码</a><a class="left" href="#" onclick="addTab('数字微调','demo/numberspinner.html')">数字微调 numberspinner</a></li>
+<li><a href="#" onclick="addTab('分页源码','txt/pagination.txt')">源码</a><a class="left" href="#" onclick="addTab('分页','demo/pagination.html')">分页 pagination</a></li>
+
+<li><a href="#" onclick="addTab('面板源码','txt/panel.txt')">源码</a><a class="left" href="#" onclick="addTab('面板','demo/panel.html')">面板 panel</a></li>
+<li><a href="#" onclick="addTab('大小可变源码','txt/resizable.txt')">源码</a><a class="left" href="#" onclick="addTab('大小可变','demo/resizable.html')">大小可变 resizable</a></li>
+<li><a href="#" onclick="addTab('下拉菜单按钮源码','txt/splitbutton.txt')">源码</a><a class="left" href="#" onclick="addTab('下拉菜单按钮','demo/splitbutton.html')">下拉菜单按钮 splitbutton</a></li>
+<li><a href="#" onclick="addTab('标签页源码','txt/tabs.txt')">源码</a><a class="left" href="#" onclick="addTab('标签页','demo/tabs.html')">标签页 tabs</a></li>
+
+<li><a href="#" onclick="addTab('时间选择源码','txt/timespinner.txt')">源码</a><a class="left" href="#" onclick="addTab('时间选择','demo/timespinner.html')">时间选择 timespinner</a></li>
+
+<li><a href="#" onclick="addTab('目录树源码','txt/tree.txt')">源码</a><a class="left" href="#" onclick="addTab('目录树','demo/tree.html')">目录树 tree</a></li>
+<li><a href="#" onclick="addTab('栅格树源码','txt/treegrid.txt')">源码</a><a class="left" href="#" onclick="addTab('栅格树','demo/treegrid.html')">栅格树 treegrid</a></li>
+<li><a href="#" onclick="addTab('验证源码','txt/validatebox.txt')">源码</a><a class="left" href="#" onclick="addTab('验证','demo/validatebox.html')">验证 validatebox</a></li>
+
+<li><a href="#" onclick="addTab('窗口源码','txt/window.txt')">源码</a><a class="left" href="#" onclick="addTab('窗口','demo/window.html')">窗口 window</a></li>
+
+</ul>
+
+	</div>
+
+	<div region="center" title="Main Title">
+
+	<div id="tt" class="easyui-tabs" fit="true" border="false">
+		<div title="First Tab" style="padding:10px;">
+			First Tab
+		</div>
+
+	</div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>jQuery.beautyOfCode 0.2 Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<script type="text/javascript" src="../jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../jquery.beautyOfCode-min.js"></script>
+<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script type="text/javascript">
+		$(function(){ 
+			$.beautyOfCode.init('clipboard.swf');
+			//$.beautyOfCode.beautifyAll();
+		}); 
+	</script>
+
+<script type="text/javascript">
+	$( function() {
+		$('#aa').accordion( {
+			width : 400,
+			height : 200,
+			fit : false
+		});
+	});
+</script>
+
+
+</head>
+<body >
+	<h2>实例</h2>
+		<pre class="code">
+	  <code class="javascript">
+&lt;script type="text/javascript">
+	$( function() {
+		$('#aa').accordion( {
+			width : 400,
+			height : 200,
+			fit : false
+		});
+	});
+&lt;/script>
+
+      </code>
+	</pre>
+
+	<pre class="code">
+	  <code class="html">
+&lt;div id="aa" border="true" >
+&lt;div title="Title1" icon="icon-save" style="overflow: auto; padding: 10px;">
+	&lt;h3 style="color: #0099FF;">Accordion for jQuery&lt;/h3>
+	&lt;p>Accordion is a part of easyui framework for jQuery. It lets you define your accordion component on web page more easily.&lt;/p>
+&lt;/div>
+&lt;div title="Title2" icon="icon-reload" selected="true"
+	style="padding: 10px;">content2&lt;/div>
+&lt;div title="Title3">content3&lt;/div>
+&lt;/div>
+      </code>
+	</pre>
+  <h4>演示</h4>
+<div id="aa" border="true" >
+<div title="Title1" icon="icon-save" style="overflow: auto; padding: 10px;">
+<h3 style="color: #0099FF;">Accordion for jQuery</h3>
+<p>Accordion is a part of easyui framework for jQuery. It lets you define your accordion component on web page more easily.</p>
+</div>
+<div title="Title2" icon="icon-reload" selected="true"
+	style="padding: 10px;">content2</div>
+<div title="Title3">content3</div>
+</div>
+
+
+<h4>扩展</h4>
+<h5>实例html代码中</h5>
+	<pre class="code">
+	  <code class="html">
+		&lt;div id="aa" border="true" >
+      </code>
+	</pre>
+
+
+<h5>此行也可写成</h5>
+	<pre class="code">
+	  <code class="html">
+		&lt;div id="aa" class="easyui-accordion" style="width:300px;height:200px;" fit="false" border="false">
+      </code>
+	</pre>
+
+<h5>并且将js代码全部去掉，效果图是一样的。</h5>
+
+<h4>参数</h4>
+<h5>容器参数</h5>
+	<pre class="code">
+	  <code class="html">
+参数名称	参数类型			描述								默认值
+width		数字		可折叠标签的宽度。							auto
+height		数字		可折叠标签的高度。							auto
+fit			布尔		是否使可折叠标签自动缩放以适应父容器
+					的大小，当为true时width和height参数将失效。	FALSE
+border		布尔		是否显示边界线。							TRUE
+
+      </code>
+	</pre>
+
+<h5>面板参数</h5>
+	<pre class="code">
+	  <code class="html">
+参数名称	参数类型			描述								默认值
+selected	布尔		设置可折叠标签中默认展开的标签页			false
+
+      </code>
+	</pre>
+</body>
+</html>
