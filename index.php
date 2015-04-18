@@ -1,5 +1,4 @@
 <?php
-//2
 define('HTTP_HOST', $_SERVER['HTTP_HOST']);
 
 /*
