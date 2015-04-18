@@ -1,13 +1,13 @@
 <?php
 
-define('HTTP_HOST', $_SERVER['HTTP_HOST2']);
+define('HTTP_HOST', $_SERVER['HTTP_HOST']);
 
 /*
  *---------------------------------------------------------------
- * APPLICATION ENVIRONMENT3
+ * APPLICATION ENVIRONMENT
  *---------------------------------------------------------------
  *
- * You can load different configurations depending on your4
+ * You can load different configurations depending on your
  * current environment. Setting the environment also influences
  * things like logging and error reporting.
  *
