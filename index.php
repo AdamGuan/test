@@ -1,6 +1,6 @@
 <?php
 
-define('HTTP_HOST', $_SERVER['HTTP_HOST4']);
+define('HTTP_HOST', $_SERVER['HTTP_HOST']);
 
 /*
  *---------------------------------------------------------------
