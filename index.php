@@ -1,10 +1,10 @@
 <?php
 
-define('HTTP_HOST', $_SERVER['HTTP_HOST']);
+define('HTTP_HOST', $_SERVER['HTTP_HOST1']);
 
 /*
  *---------------------------------------------------------------
- * APPLICATION ENVIRONMENT
+ * APPLICATION ENVIRONMENT2
  *---------------------------------------------------------------
  *
  * You can load different configurations depending on your
