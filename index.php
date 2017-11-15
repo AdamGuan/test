@@ -1,4 +1,6 @@
 <?php
+//abc
+//123
 define('HTTP_HOST', $_SERVER['HTTP_HOST']);
 
 /*
